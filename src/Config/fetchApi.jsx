@@ -85,7 +85,7 @@ const fetchApi = async (url, method = "GET", body = null) => {
             };
 
             const urlPath = url.replace("http://localhost:3000", "");
-            const mainServerUrl = `http://10.240.67.14:80/api${urlPath}`;
+            const mainServerUrl = `http://ce67-08.cloud.ce.kmitl.ac.th/api${urlPath}`;
 
             try {
               console.log(
@@ -122,7 +122,7 @@ const fetchApi = async (url, method = "GET", body = null) => {
               await notifyMainServerFailure(
                 urlPath.startsWith("http")
                   ? urlPath
-                  : `http://10.240.67.14:80/api${urlPath}`,
+                  : `http://ce67-08.cloud.ce.kmitl.ac.th/api${urlPath}`,
                 "POST",
                 502,
                 responseData,
@@ -133,7 +133,7 @@ const fetchApi = async (url, method = "GET", body = null) => {
           // กรณี PUT, PATCH, DELETE
           else {
             const urlPath = url.replace("http://localhost:3000", "");
-            const mainServerUrl = `http://10.240.67.14:80/api${urlPath}`;
+            const mainServerUrl = `http://ce67-08.cloud.ce.kmitl.ac.th/api${urlPath}`;
 
             try {
               console.log(
@@ -187,7 +187,7 @@ const fetchApi = async (url, method = "GET", body = null) => {
               await notifyMainServerFailure(
                 urlPath.startsWith("http")
                   ? urlPath
-                  : `http://10.240.67.14:80/api${urlPath}`,
+                  : `http://ce67-08.cloud.ce.kmitl.ac.th/api${urlPath}`,
                 method,
                 502,
                 bodyData,
