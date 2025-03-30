@@ -158,7 +158,7 @@ const Login = () => {
           <div className="flex items-center border rounded-full bg-gray-50 px-3">
             <FaLock style={{ color: "#DD9F52" }} className="mr-2" />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               value={passwordInput}
               placeholder="กรอกรหัสผ่าน..."
