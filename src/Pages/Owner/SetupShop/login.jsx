@@ -58,14 +58,20 @@ const Login = () => {
         console.log("JWT PAYLOAD:", decodedToken);
 
         sessionStorage.setItem("token", userData.token);
-        sessionStorage.setItem("owner_id", decodedToken.owner_id);
+        sessionStorage.setItem("owner_id", decodedToken["owner-id"]);
         sessionStorage.setItem("email", decodedToken.email);
-        // sessionStorage.setItem("branch_id", decodedToken.branch_id);
+        sessionStorage.setItem("branch_id", decodedToken.branch_id);
         sessionStorage.setItem("role", decodedToken.roles[0]);
 
         const passwordReset = sessionStorage.getItem("password_reset");
+        const role = decodedToken.roles[0];
 
-        if (passwordReset === "true") {
+        if (role === "employee") {
+          sessionStorage.setItem("owner_id", decodedToken.manager);
+          sessionStorage.setItem("branch_id", decodedToken.branch_id);
+        }
+
+        if (role === "employee") {
           navigate("/role");
         } else {
           navigate("/branch");
@@ -179,6 +185,16 @@ const Login = () => {
             </button>
           </div>
         </div>
+
+        {/* <div className="flex justify-end">
+          <button
+            onClick={handleForgotPassword}
+            style={{ color: "#DD9F52" }}
+            className="block mb-6"
+          >
+            ลืมรหัสผ่าน?
+          </button>
+        </div> */}
 
         <button
           onClick={() => handleLogin(usernameInput, passwordInput)}
